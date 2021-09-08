@@ -1,4 +1,4 @@
-package com.cyborck.gameOfLive;
+package com.cyborck.gameOfLife;
 
 public class Main {
     public static void main ( String[] args ) {

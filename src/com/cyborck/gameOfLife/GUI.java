@@ -1,4 +1,4 @@
-package com.cyborck.gameOfLive;
+package com.cyborck.gameOfLife;
 
 import javax.swing.*;
 import java.awt.*;

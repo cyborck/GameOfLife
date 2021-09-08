@@ -1,4 +1,4 @@
-package com.cyborck.gameOfLive;
+package com.cyborck.gameOfLife;
 
 import java.util.Arrays;
 import java.util.Timer;
