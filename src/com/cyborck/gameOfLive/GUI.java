@@ -7,18 +7,18 @@ import java.awt.event.*;
 public class GUI extends JFrame implements KeyListener, MouseListener, MouseMotionListener {
     private static final int MAX_SIZE = 1000;
     private static final int CELL_OFFSET = 2;
-    private static final int CELL_SIZE = ( MAX_SIZE - CELL_OFFSET * ( GameOfLive.SIZE + 1 ) ) / GameOfLive.SIZE;
-    private static final int REAL_SIZE = ( GameOfLive.SIZE + 1 ) * CELL_OFFSET + GameOfLive.SIZE * CELL_SIZE;
+    private static final int CELL_SIZE = ( MAX_SIZE - CELL_OFFSET * ( GameOfLife.SIZE + 1 ) ) / GameOfLife.SIZE;
+    private static final int REAL_SIZE = ( GameOfLife.SIZE + 1 ) * CELL_OFFSET + GameOfLife.SIZE * CELL_SIZE;
 
     static {
         System.out.println( REAL_SIZE );
     }
 
-    private final GameOfLive gameOfLive;
+    private final GameOfLife gameOfLife;
 
-    public GUI ( GameOfLive gameOfLive ) {
+    public GUI ( GameOfLife gameOfLife ) {
         super();
-        this.gameOfLive = gameOfLive;
+        this.gameOfLife = gameOfLife;
 
         setDefaultCloseOperation( EXIT_ON_CLOSE );
         setUndecorated( true );
@@ -31,7 +31,7 @@ public class GUI extends JFrame implements KeyListener, MouseListener, MouseMoti
             protected void paintComponent ( Graphics g ) {
                 super.paintComponent( g );
 
-                boolean[][] cells = gameOfLive.getCells();
+                boolean[][] cells = gameOfLife.getCells();
 
                 g.setColor( new Color( 245, 113, 37 ) ); //orange
                 for ( int i = 0; i < cells.length; i++ )
@@ -60,9 +60,9 @@ public class GUI extends JFrame implements KeyListener, MouseListener, MouseMoti
     public void keyReleased ( KeyEvent e ) {
         switch ( e.getKeyCode() ) {
             case KeyEvent.VK_ESCAPE -> System.exit( 0 );
-            case KeyEvent.VK_SPACE -> gameOfLive.runOrExitSimulation();
-            case KeyEvent.VK_ENTER -> gameOfLive.update();
-            case KeyEvent.VK_C -> gameOfLive.clear();
+            case KeyEvent.VK_SPACE -> gameOfLife.runOrExitSimulation();
+            case KeyEvent.VK_ENTER -> gameOfLife.update();
+            case KeyEvent.VK_C -> gameOfLife.clear();
         }
     }
 
@@ -71,7 +71,7 @@ public class GUI extends JFrame implements KeyListener, MouseListener, MouseMoti
         int cellX = e.getX() / ( CELL_SIZE + CELL_OFFSET );
         int cellY = e.getY() / ( CELL_SIZE + CELL_OFFSET );
 
-        gameOfLive.changeCellAt( cellX, cellY );
+        gameOfLife.changeCellAt( cellX, cellY );
     }
 
     @Override
@@ -79,7 +79,7 @@ public class GUI extends JFrame implements KeyListener, MouseListener, MouseMoti
         int cellX = e.getX() / ( CELL_SIZE + CELL_OFFSET );
         int cellY = e.getY() / ( CELL_SIZE + CELL_OFFSET );
 
-        gameOfLive.setCell( cellX, cellY, true );
+        gameOfLife.setCell( cellX, cellY, true );
     }
 
     //not used

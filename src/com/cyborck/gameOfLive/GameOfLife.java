@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameOfLive {
-    public static final int SIZE = 100;
+public class GameOfLife {
+    public static final int SIZE = 10;
     public static final float TICK_PERIOD = 1 / 30f; //seconds
 
     private boolean[][] cells;
     private boolean run;
 
-    public GameOfLive () {
+    public GameOfLife () {
         cells = new boolean[ SIZE ][ SIZE ];
         clear();
         run = false;
